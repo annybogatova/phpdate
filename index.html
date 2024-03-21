@@ -1,18 +1,37 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./pages/index.css">
-  <title>Hello World</title>
+  <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+  <title>Date</title>
 </head>
+
 <body class="page">
   <header class="header">
-    <h1 class="header__title">Hello World!</h1>
+    <h1 class="header__title">Date constructor</h1>
   </header>
-  <main class="main"></main>
+  <main class="constructor">
+    <section class="constructor__container">
+      <div class="constructor__items-container constructor__items-container-sources">
+        <!-- создавать тоже в js -->
+        <p id="Y" class="constructor__item constructor__item-source" draggable="true">Y</p>
+        <p id="M" class="constructor__item constructor__item-source" draggable="true">M</p>
+        <p id="D" class="constructor__item constructor__item-source" draggable="true">D</p>
+        <p id="spase" class="constructor__item constructor__item-source" draggable="true"> </p>
+      </div>
+      <div id="sortablelist" class="constructor__items-container constructor__items-container-result" sortable></div>
+      <div class="constructor__result">
+        <p class="constructor__result-text"></p>
+        <p class="constructor_result-date"></p>
+      </div>
+    </section>
+  </main>
   <footer class="footer"></footer>
   <script src="./script/index.js"></script>
 </body>
+
 </html>

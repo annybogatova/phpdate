@@ -1,3 +1,6 @@
-:root{
-  --variables : 10px; /* Переменная : свойтва */ 
+:root {
+  --variables: 10px;
+  --item-base-color: #561643;
+  --item-text-color: white;
+  --container-base-color: #FCFAFA;
 }

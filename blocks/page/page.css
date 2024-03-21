@@ -1,3 +1,25 @@
-.page{
-  
+.page {}
+
+.constructor__items-container {
+  display: flex;
+  flex-direction: row;
+  background-color: var(--container-base-color);
+  border: 1px solid black;
+  min-height: 20px;
+  padding: 20px;
+  margin: 20px;
+}
+
+.constructor__item {
+  display: flex;
+  color: var(--item-text-color);
+  background-color: var(--item-base-color);
+  padding: 20px;
+  margin: 10px;
+  width: fit-content;
+  cursor: move;
+}
+
+.constructor__item_dragging {
+  opacity: .5;
 }
