@@ -2,7 +2,7 @@
 
 .constructor__items-container {
   display: flex;
-  flex-direction: row;
+  flex-wrap: wrap;
   background-color: var(--container-base-color);
   border: 1px solid black;
   min-height: 20px;
