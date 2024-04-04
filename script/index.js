@@ -1,3 +1,9 @@
+import { deleteElement } from "./deleteElement.js";
+import { addEvent } from "./addEventOnDraggable.js";
+import { codeGenerator } from "./codeGenerator.js";
+
+
+
 const characters = [
   //day
   {
@@ -128,7 +134,7 @@ const characters = [
     character: 'v',
     description: 'Миллисекунды. Замечание такое же, как и для u. '
   },
-  //
+  //time zone
   {
     character: 'e',
     description: 'Идентификатор часового пояса'
@@ -172,48 +178,35 @@ const characters = [
   },
 ];
 
+
 window.addEventListener("load", function () {
   const container_sourse = document.querySelector('.constructor__items-container');
   characters.forEach(char => {
-    container_sourse.insertAdjacentHTML('beforeend', '<p class="constructor__item constructor__item-source" data-tooltip="' + char.description + '" draggable="true">' + char.character + '</p>')
+    container_sourse.insertAdjacentHTML('beforeend',
+      // '<p class="constructor__item constructor__item-source" data-tooltip="' + char.description + '" draggable="true">' + char.character + '</p>')
+      // '<div class="constructor__item constructor__item-source" draggable="true" data-tooltip="' + char.description + '"> <p class="text">' + char.character +'</p> <span class="badge">-</span></div>');
+      '<div class="constructor__item constructor__item-source" draggable="true" data-tooltip="' + char.description + '"> <p class="constructor__item-text">' + char.character + '</p></div>');
   })
   addListener();
 
 })
 
+const container_sourse = document.querySelector('.constructor__items-container-sources');
+const container_result = document.querySelector('.constructor__items-container-result');
+
+export let draggableElement = null;
+let selectedElement = null;
+
+
 function addListener() {
   const draggables = document.querySelectorAll('.constructor__item');
 
   draggables.forEach(draggable => {
-    draggable.addEventListener('dragstart', event => {
-      draggable.classList.add('constructor__item_dragging');
-      event.dataTransfer.setData("text/plane", event.target.id);
-
-      // console.log('[draggable dragstart] --- ', draggable.textContent);
-    })
-    draggable.addEventListener('dragend', event => {
-      // if (document.querySelector('.constructor__item_dragging').parentNode.classList.contains('constructor__items-container-sources')) {
-      // document.querySelector('.constructor__items-container-result').removeChild(selectedElement);
-      // }
-
-      draggable.classList.remove('constructor__item_dragging');
-      if (draggableElement != null) {
-        draggableElement.classList.remove('constructor__item_dragging');
-      }
-
-      codeGenerator();
-
-      // console.log('[draggable dragend] --- ', draggable.textContent);
-    })
+    addEvent(draggable, draggableElement);
   })
-
-
 }
-const container_sourse = document.querySelector('.constructor__items-container-sources');
-const container_result = document.querySelector('.constructor__items-container-result');
 
-let draggableElement = null;
-let selectedElement = null;
+
 
 
 container_sourse.addEventListener('dragstart', event => {
@@ -225,15 +218,29 @@ container_sourse.addEventListener('dragover', event => {
 })
 container_sourse.addEventListener('drop', event => {
   // console.log('sourse drop')
-  document.querySelector('.constructor__items-container-result').removeChild(selectedElement);
+  if (Array.from(container_result.childNodes).includes(selectedElement)) {
+    container_result.removeChild(selectedElement);
+  }
   codeGenerator();
+})
+container_sourse.addEventListener('dragend', event => {
+  draggableElement.classList.remove('constructor__item-source');
+  draggableElement.classList.add('constructor__item-custom');
+
+  const newBadge = document.createElement('span');
+  newBadge.classList.add('constructor__item-badge');
+  newBadge.innerText = '-';
+  newBadge.addEventListener('click', () => {
+    deleteElement(draggableElement, container_result);
+    codeGenerator();
+  });
+  draggableElement.appendChild(newBadge);
 })
 
 //swap elements in constructor
 container_result.addEventListener('dragover', event => {
   event.preventDefault();
   const afterElement = getDragAfterElement(container_result, event.clientY, event.clientX);
-  // const draggable = document.querySelector('.constructor__item_dragging');
   let draggable = null;
   if (draggableElement != null) {
     draggable = draggableElement;
@@ -242,7 +249,6 @@ container_result.addEventListener('dragover', event => {
   }
   // console.log(draggable, afterElement);
   if (afterElement == null) {
-    // TODO: add some style
     container_result.appendChild(draggable);
   } else {
     container_result.insertBefore(draggable, afterElement);
@@ -257,7 +263,7 @@ container_result.addEventListener('dragstart', event => {
 })
 
 container_result.addEventListener('dragend', event => {
-  // console.log('result dragend');
+  console.log('result dragend');
   // console.log(event.target.parentNode.classList)
   event.target.classList.remove('constructor__item_dragging');
   codeGenerator();
@@ -282,33 +288,3 @@ function getDragAfterElement(container, y, x) {
   }, { distance: Number.POSITIVE_INFINITY }).element;
 }
 
-
-
-function codeGenerator() {
-
-  let result_line = '';
-
-  container_result.childNodes.forEach(child => {
-    result_line += child.textContent;
-  })
-
-  const url = './script/php/date.php';
-  const form = new FormData();
-  form.append('format', result_line);
-  const request = new Request(url, {
-    method: 'POST',
-    body: form
-  })
-
-  fetch(request)
-    .then(response => {
-      return response.text();
-    })
-    .then(data => {
-      document.querySelector('.constructor__result-text').innerHTML = '';
-      document.querySelector('.constructor__result-text').textContent = 'date( \'' + result_line + '\', ?int $timestamp = null): string';
-
-      document.querySelector('.constructor_result-date').innerHTML = '';
-      document.querySelector('.constructor_result-date').textContent = data.toString();
-    });
-}

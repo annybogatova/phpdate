@@ -12,14 +12,53 @@
 
 .constructor__item {
   display: flex;
+  align-items: center;
+  justify-content: center;
   color: var(--item-text-color);
   background-color: var(--item-base-color);
+  text-align: center;
   padding: 20px;
   margin: 10px;
-  width: fit-content;
-  cursor: move;
+  width: 16px;
+  height: 20px;
+  cursor: pointer;
 }
 
 .constructor__item_dragging {
   opacity: .5;
+}
+
+.constructor__item-custom {
+  display: flex;
+  justify-content: flex-start;
+  text-align: center;
+  z-index: 1;
+}
+
+.constructor__item-text {
+  text-align: center;
+  position: relative;
+  min-width: 16px;
+  min-height: 20px;
+
+}
+
+.constructor__item-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  top: -30px;
+  left: 10px;
+  min-width: 25px;
+  height: 25px;
+  font-size: 1rem;
+  text-align: center;
+  line-height: 1.8rem;
+  color: white;
+  border-radius: 50%;
+  background: var(--badge-color);
+  opacity: 0.9;
+  z-index: 5;
+  cursor: pointer;
 }

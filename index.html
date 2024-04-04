@@ -19,30 +19,31 @@
     <div class="normalize-time__container">
       <input type="button" class="normalize-time__button" title="normalize-time" value="convert"
         onclick="EpochToHuman();">
-      <!-- <p class="normalize-time__result"></p>
-      <input type="button" class="normalize-time__close" title="close normalize-time" value="close"
-        onclick="hideHumanTime();"> -->
-
     </div>
     <section class="constructor__container">
       <div class="constructor__items-container constructor__items-container-sources">
         <!-- <p class="constructor__item constructor__item-source" draggable="true">Y</p> -->
       </div>
+
       <form class="add-element-form">
         <input type="text" placeholder="New constant..." class="addElement-input">
         <button type="submit">Add +</button>
       </form>
+
       <div class="constructor__items-container constructor__items-container-result"></div>
       <div class="constructor__result">
         <p class="constructor__result-text"></p>
         <p class="constructor_result-date"></p>
       </div>
+
     </section>
+
   </main>
   <footer class="footer"></footer>
-  <script src="./script/index.js"></script>
+  <script type="module" src="./script/index.js"></script>
+  <script type="module" src="./script/addElement.js"></script>
   <script src="./script/unix.js"></script>
-  <script src="./script/addElement.js"></script>
+  <script type="module" src="./script/addEventOnDraggable.js"></script>
 </body>
 
 </html>
