@@ -5,13 +5,15 @@ function getUnixTime() {
 // upd time every second
 setInterval(function () {
   document.querySelector('.unix').innerHTML = getUnixTime();
+
+
   // if (is_clicked) EpochToHuman();
 }, 1000);
 
 // display at page load
 document.querySelector('.unix').innerHTML = getUnixTime();
 
-// let is_clicked = false;
+
 
 const container = document.querySelector('.normalize-time__container');
 
@@ -20,7 +22,7 @@ function EpochToHuman() {
 
   if (document.querySelector('.normalize-time__result') == null) {
     container.insertAdjacentHTML('afterbegin', '<p class="normalize-time__result"></p>');
-    container.insertAdjacentHTML('beforeend', '<input type="button" class="normalize-time__close" title="close normalize-time" value="close" onclick="hideHumanTime();">');
+    container.insertAdjacentHTML('beforeend', '<input type="button" class="normalize-time__close btn btn-outline-dark" title="close normalize-time" value="close" onclick="hideHumanTime();">');
     document.querySelector('.normalize-time__button').setAttribute('value', 'reset');
   }
 

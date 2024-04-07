@@ -7,6 +7,8 @@ export function codeGenerator() {
   })
 
 
+
+  console.log(result_line);
   const url = './script/php/date.php';
   const form = new FormData();
   form.append('format', result_line);
@@ -20,11 +22,15 @@ export function codeGenerator() {
       return response.text();
     })
     .then(data => {
-      document.querySelector('.constructor__result-text').innerHTML = '';
+      document.querySelector('.constructor__result-text').innerHTML = 'date(string $format, ?int $timestamp = null): string';
       if (result_line != '') {
         document.querySelector('.constructor__result-text').textContent = 'date( \'' + result_line + '\', ?int $timestamp = null): string';
       }
       document.querySelector('.constructor_result-date').innerHTML = '';
+      if (data.toString() != '') {
+        document.querySelector('.result-date').style.display = 'block';
+      }
       document.querySelector('.constructor_result-date').textContent = data.toString();
+
     });
 }
