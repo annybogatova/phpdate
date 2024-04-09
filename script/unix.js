@@ -22,8 +22,8 @@ function EpochToHuman() {
 
   if (document.querySelector('.normalize-time__result') == null) {
     container.insertAdjacentHTML('afterbegin', '<p class="normalize-time__result"></p>');
-    container.insertAdjacentHTML('beforeend', '<input type="button" class="normalize-time__close btn btn-outline-dark" title="close normalize-time" value="close" onclick="hideHumanTime();">');
-    document.querySelector('.normalize-time__button').setAttribute('value', 'reset');
+    container.insertAdjacentHTML('beforeend', '<input type="button" class="normalize-time__close btn btn-outline-dark" value="Close" onclick="hideHumanTime();">');
+    document.querySelector('.normalize-time__button').setAttribute('value', 'Reset');
   }
 
   let date = new Date(document.querySelector('.unix').textContent * 1000);

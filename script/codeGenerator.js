@@ -22,9 +22,10 @@ export function codeGenerator() {
       return response.text();
     })
     .then(data => {
-      document.querySelector('.constructor__result-text').innerHTML = 'date(string $format, ?int $timestamp = null): string';
+      document.querySelector('.constructor__result-text').innerHTML = ' $date = new DateTime(); <br> echo $date->format(string $format);';
       if (result_line != '') {
-        document.querySelector('.constructor__result-text').textContent = 'date( \'' + result_line + '\', ?int $timestamp = null): string';
+        // document.querySelector('.constructor__result-text').textContent = 'date( \'' + result_line + '\', ?int $timestamp = null): string';
+        document.querySelector('.constructor__result-text').innerHTML = '$date = new DateTime(); <br> echo $date->format(\'' + result_line + '\');';
       }
       document.querySelector('.constructor_result-date').innerHTML = '';
       if (data.toString() != '') {

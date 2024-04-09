@@ -229,24 +229,37 @@ window.addEventListener("load", function () {
   characters.forEach(char => {
     const item_template = document.querySelector('.item-template').content.cloneNode(true);
     item_template.querySelector('.constructor__item-text').innerText = char.character;
+    // console.log(item_template)
 
     if (char.category == 'day') {
       day_container.append(item_template);
+      day_container.lastElementChild.setAttribute("data-tooltip", char.description);
+      // day_container.lastElementChild.setAttribute('data-bs-title', char.description);
     }
     if (char.category == 'month') {
       month_container.append(item_template);
+      month_container.lastElementChild.setAttribute("data-tooltip", char.description);
+      // month_container.lastElementChild.setAttribute('data-bs-title', char.description);
     }
     if (char.category == 'year') {
       year_container.append(item_template);
+      year_container.lastElementChild.setAttribute("data-tooltip", char.description);
+      // year_container.lastElementChild.setAttribute('data-bs-title', char.description);
     }
     if (char.category == 'time') {
       time_container.append(item_template);
+      time_container.lastElementChild.setAttribute("data-tooltip", char.description);
+      // time_container.lastElementChild.setAttribute('data-bs-title', char.description);
     }
     if (char.category == 'time zone') {
       timeZone_container.append(item_template);
+      timeZone_container.lastElementChild.setAttribute("data-tooltip", char.description);
+      // timeZone_container.lastElementChild.setAttribute('data-bs-title', char.description);
     }
     if (char.category == 'full date') {
       fullDate_container.append(item_template);
+      fullDate_container.lastElementChild.setAttribute("data-tooltip", char.description);
+      // fullDate_container.lastElementChild.setAttribute('data-bs-title', char.description);
     }
     // container_sourse.append(item_template);
 
@@ -261,18 +274,36 @@ window.addEventListener("load", function () {
   addListener();
 
 
-  if (document.querySelector('.form-check-input').checked) {
-    document.querySelector('.add-timestamp-form').insertAdjacentHTML('beforeend', '<input type="text" class="form-control timestamp-input" placeholder="int $timestamp =">')
-  }
+  // if (document.querySelector('.form-check-input').checked) {
+  //   addInput()
+  // }
 })
 
-document.querySelector('.form-check-input').addEventListener('click', () => {
-  if (document.querySelector('.form-check-input').checked) {
-    document.querySelector('.add-timestamp-form').insertAdjacentHTML('beforeend', '<input type="text" class="form-control timestamp-input" placeholder="int $timestamp =">')
-  } else {
-    document.querySelector('.timestamp-input').remove();
-  }
+// document.querySelector('.form-check-input').addEventListener('click', () => {
+//   if (document.querySelector('.form-check-input').checked) {
+//     addInput();
+//   } else {
+//     document.querySelectorAll('.timestamp-input').forEach(input => {
+//       input.remove()
+//     });
+//   }
+// })
+
+function addInput() {
+  document.querySelector('.add-timestamp-form').insertAdjacentHTML('beforeend', '<input type="text" class="form-control timestamp-input" placeholder="hour">')
+  document.querySelector('.add-timestamp-form').insertAdjacentHTML('beforeend', '<input type="text" class="form-control timestamp-input" placeholder="minute">')
+  document.querySelector('.add-timestamp-form').insertAdjacentHTML('beforeend', '<input type="text" class="form-control timestamp-input" placeholder="second">')
+  document.querySelector('.add-timestamp-form').insertAdjacentHTML('beforeend', '<input type="text" class="form-control timestamp-input" placeholder="day">')
+  document.querySelector('.add-timestamp-form').insertAdjacentHTML('beforeend', '<input type="text" class="form-control timestamp-input" placeholder="month">')
+  document.querySelector('.add-timestamp-form').insertAdjacentHTML('beforeend', '<input type="text" class="form-control timestamp-input" placeholder="year">')
+}
+
+const copy = document.querySelector('.copy-badge');
+copy.addEventListener('click', () => {
+  const textValue = document.querySelector('.constructor__result-text').innerText;
+  navigator.clipboard.writeText(textValue);
 })
+
 
 const container_sourse = document.querySelector('.constructor__items-container-sources');
 const container_result = document.querySelector('.constructor__items-container-result');
@@ -301,6 +332,7 @@ function addListener() {
 
         item_template.querySelector('.constructor__item-text').innerText = draggable.querySelector('.constructor__item-text').textContent;
         item_template.querySelector('.constructor__item-badge').innerText = '-';
+
         item_template.querySelector('.constructor__item-badge').addEventListener('click', event => {
           event.target.closest('div.constructor__item').remove();
           codeGenerator()
@@ -321,12 +353,14 @@ function addListener() {
         // newElement.appendChild(newBadge);
 
         container_result.appendChild(item_template);
+        container_result.lastElementChild.setAttribute("data-tooltip", draggable.getAttribute("data-tooltip"));
 
         codeGenerator();
       }
     })
   })
 }
+
 
 
 

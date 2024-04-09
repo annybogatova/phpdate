@@ -1,7 +1,14 @@
 .page {}
 
 .header__title {
-  font-size: 50px;
+  /* font-size: 50px;
+  font-family: "Coda", system-ui;
+  font-weight: 400;
+  font-style: normal; */
+}
+
+.header__main {
+  margin-bottom: 1rem;
 }
 
 .constructor__items-container {
@@ -10,11 +17,18 @@
   padding: 20px;
 }
 
-.constructor__item {
-  display: flex;
+.tooltip {
+  position: fixed;
+  padding: 10px 20px;
+  border: 1px solid #f3e1fb;
+  border-radius: 4px;
+  text-align: center;
+  color: #fff;
+  background: #333;
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.3);
 }
 
-.constructor__result-text {
+.result-text__container {
   border: 1px dashed black;
   min-height: 20px;
   padding: 20px;
@@ -26,19 +40,40 @@
   display: none;
 }
 
-/* .constructor__item {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--item-text-color);
-  background-color: var(--item-base-color);
-  text-align: center;
-  padding: 20px;
-  margin: 10px;
-  width: 16px;
-  height: 20px;
+.copy-badge {
   cursor: pointer;
-} */
+}
+
+.constructor__item {
+  position: relative;
+  text-decoration: none;
+  /* Убираем стандартное подчёркивание */
+}
+
+.constructor__item::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  top: 60px;
+  /* Можно подстроить это значение под себя */
+  left: -10px;
+  z-index: 100;
+  /* Подсказка будет отображаться поверх других элементов */
+  background: #333;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 3px;
+  display: none;
+  /* По умолчанию скрыта */
+  font-size: medium;
+
+  white-space: nowrap;
+  /* Гарантирует, что текст не будет переноситься на следующую строку  */
+}
+
+.constructor__item:hover::after {
+  display: block;
+  /* При наведении показываем подсказку */
+}
 
 .constructor__item_dragging {
   opacity: .5;
