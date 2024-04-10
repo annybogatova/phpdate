@@ -302,6 +302,11 @@ const copy = document.querySelector('.copy-badge');
 copy.addEventListener('click', () => {
   const textValue = document.querySelector('.constructor__result-text').innerText;
   navigator.clipboard.writeText(textValue);
+  copy.setAttribute("data-tooltip", "Copied!");
+})
+copy.addEventListener('mouseout', event => {
+  setTimeout(function () { copy.setAttribute("data-tooltip", "Copy to clipboard"); }, 2000);
+
 })
 
 

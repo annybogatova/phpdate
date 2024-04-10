@@ -36,13 +36,19 @@
   text-align: center;
 }
 
-.result-date {
+.result-date__container {
   display: none;
 }
 
 .copy-badge {
   cursor: pointer;
 }
+
+/* .btn-outline-dark {
+  --bs-btn-bg: #E6EFED !important;
+  --bs-btn-hover-bg: white !important;
+  --bs-btn-hover-color: black !important;
+} */
 
 .constructor__item {
   position: relative;
@@ -86,22 +92,28 @@
   z-index: 1;
 }
 
-/* .constructor__item-badge {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
+.copy-badge::after {
+  content: attr(data-tooltip);
+  position: absolute;
   top: -30px;
-  left: 10px;
-  min-width: 25px;
-  height: 25px;
-  font-size: 1rem;
-  text-align: center;
-  line-height: 1.8rem;
+  /* Можно подстроить это значение под себя */
+  right: 0px;
+  z-index: 100;
+  /* Подсказка будет отображаться поверх других элементов */
+  background: #333;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 3px;
+  display: none;
+  transition: all 5s;
+}
+
+.copy-badge:hover::after {
+  display: block;
+  /* При наведении показываем подсказку */
+}
+
+.copyright {
   color: white;
-  border-radius: 50%;
-  background: var(--badge-color);
-  opacity: 0.9;
-  z-index: 5;
-  cursor: pointer;
-} */
+  text-decoration: none;
+}

@@ -29,7 +29,9 @@ export function codeGenerator() {
       }
       document.querySelector('.constructor_result-date').innerHTML = '';
       if (data.toString() != '') {
-        document.querySelector('.result-date').style.display = 'block';
+        document.querySelector('.result-date__container').style.display = 'block';
+      } else {
+        document.querySelector('.result-date__container').style.display = 'none';
       }
       document.querySelector('.constructor_result-date').textContent = data.toString();
 

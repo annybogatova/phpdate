@@ -22,7 +22,7 @@ function EpochToHuman() {
 
   if (document.querySelector('.normalize-time__result') == null) {
     container.insertAdjacentHTML('afterbegin', '<p class="normalize-time__result"></p>');
-    container.insertAdjacentHTML('beforeend', '<input type="button" class="normalize-time__close btn btn-outline-dark" value="Close" onclick="hideHumanTime();">');
+    container.insertAdjacentHTML('beforeend', '<input type="button" class="normalize-time__close btn btn-outline-light" value="Close" onclick="hideHumanTime();">');
     document.querySelector('.normalize-time__button').setAttribute('value', 'Reset');
   }
 
@@ -35,5 +35,5 @@ function EpochToHuman() {
 function hideHumanTime() {
   document.querySelector('.normalize-time__result').remove();
   document.querySelector('.normalize-time__close').remove();
-  document.querySelector('.normalize-time__button').setAttribute('value', 'convert');
+  document.querySelector('.normalize-time__button').setAttribute('value', 'Convert');
 }
