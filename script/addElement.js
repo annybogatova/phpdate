@@ -14,6 +14,7 @@ form.addEventListener('submit', event => {
   const value = input.value;
   if (!value) return;
 
+
   const item_template = document.querySelector('.itemWithBadge-template').content.cloneNode(true);
 
 
@@ -32,11 +33,30 @@ form.addEventListener('submit', event => {
   });
 
   if (container_sourse.querySelector('.items__custom-container') != null) {
+    if (isExist()) {
+      return;
+    }
     container_sourse.querySelector('.items__custom-container').appendChild(item_template);
+    container_sourse.querySelector('.items__custom-container').lastElementChild.classList.add('constructor__item-custom');
   } else {
+    if (isExist()) {
+      return;
+    }
+
     const newContainer = document.querySelector('.custom-items').content.cloneNode(true);
     container_sourse.insertBefore(newContainer, form);
     container_sourse.querySelector('.items__custom-container').appendChild(item_template);
+    container_sourse.querySelector('.items__custom-container').lastElementChild.classList.add('constructor__item-custom');
+  }
+
+  function isExist() {
+    let exist = false;
+    Array.from(document.querySelectorAll('.items__custom-container .constructor__item-text')).forEach(child => {
+      if (value == child.textContent) {
+        exist = true
+      }
+    })
+    return exist;
   }
 
   // container_sourse.appendChild(item_template);

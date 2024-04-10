@@ -117,3 +117,7 @@
   color: white;
   text-decoration: none;
 }
+
+.copyright:hover {
+  color: white;
+}
