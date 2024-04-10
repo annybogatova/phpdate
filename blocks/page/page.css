@@ -1,3 +1,123 @@
-.page{
-  
+.page {}
+
+.header__title {
+  /* font-size: 50px;
+  font-family: "Coda", system-ui;
+  font-weight: 400;
+  font-style: normal; */
+}
+
+.header__main {
+  margin-bottom: 1rem;
+}
+
+.constructor__items-container {
+  border: 2px solid black;
+  min-height: 30px;
+  padding: 20px;
+}
+
+.tooltip {
+  position: fixed;
+  padding: 10px 20px;
+  border: 1px solid #f3e1fb;
+  border-radius: 4px;
+  text-align: center;
+  color: #fff;
+  background: #333;
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.3);
+}
+
+.result-text__container {
+  border: 1px dashed black;
+  min-height: 20px;
+  padding: 20px;
+  margin: 20px;
+  text-align: center;
+}
+
+.result-date__container {
+  display: none;
+}
+
+.copy-badge {
+  cursor: pointer;
+}
+
+/* .btn-outline-dark {
+  --bs-btn-bg: #E6EFED !important;
+  --bs-btn-hover-bg: white !important;
+  --bs-btn-hover-color: black !important;
+} */
+
+.constructor__item {
+  position: relative;
+  text-decoration: none;
+  /* Убираем стандартное подчёркивание */
+}
+
+.constructor__item::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  top: 60px;
+  /* Можно подстроить это значение под себя */
+  left: -10px;
+  z-index: 100;
+  /* Подсказка будет отображаться поверх других элементов */
+  background: #333;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 3px;
+  display: none;
+  /* По умолчанию скрыта */
+  font-size: medium;
+
+  white-space: nowrap;
+  /* Гарантирует, что текст не будет переноситься на следующую строку  */
+}
+
+.constructor__item:hover::after {
+  display: block;
+  /* При наведении показываем подсказку */
+}
+
+.constructor__item_dragging {
+  opacity: .5;
+}
+
+.constructor__item-custom {
+  display: flex;
+  justify-content: flex-start;
+  text-align: center;
+  z-index: 1;
+}
+
+.copy-badge::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  top: -30px;
+  /* Можно подстроить это значение под себя */
+  right: 0px;
+  z-index: 100;
+  /* Подсказка будет отображаться поверх других элементов */
+  background: #333;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 3px;
+  display: none;
+  transition: all 5s;
+}
+
+.copy-badge:hover::after {
+  display: block;
+  /* При наведении показываем подсказку */
+}
+
+.copyright {
+  color: white;
+  text-decoration: none;
+}
+
+.copyright:hover {
+  color: white;
 }
