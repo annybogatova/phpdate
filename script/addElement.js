@@ -32,12 +32,17 @@ form.addEventListener('submit', event => {
     }
   });
 
+
+
+
   if (container_sourse.querySelector('.items__custom-container') != null) {
     if (isExist()) {
       return;
     }
     container_sourse.querySelector('.items__custom-container').appendChild(item_template);
     container_sourse.querySelector('.items__custom-container').lastElementChild.classList.add('constructor__item-custom');
+    // form.classList.add('was-validated')
+
   } else {
     if (isExist()) {
       return;
@@ -47,6 +52,8 @@ form.addEventListener('submit', event => {
     container_sourse.insertBefore(newContainer, form);
     container_sourse.querySelector('.items__custom-container').appendChild(item_template);
     container_sourse.querySelector('.items__custom-container').lastElementChild.classList.add('constructor__item-custom');
+    // form.classList.add('was-validated')
+
   }
 
   function isExist() {
@@ -99,58 +106,4 @@ form.addEventListener('submit', event => {
     }
   })
 
-
-
-
-  // const newElement = document.createElement('div');
-  // newElement.classList.add('constructor__item');
-  // newElement.classList.add('constructor__item-custom');
-  // newElement.setAttribute('draggable', 'true');
-
-  // const newElementText = document.createElement('p');
-  // newElementText.classList.add('constructor__item-text');
-  // newElementText.innerText = value;
-
-  // const newBadge = document.createElement('span');
-  // newBadge.classList.add('constructor__item-badge');
-  // newBadge.innerText = 'x';
-  // newBadge.addEventListener('click', () => {
-  //   deleteElement(newElement, container_sourse);
-  // });
-
-  // newElement.appendChild(newElementText);
-  // newElement.appendChild(newBadge);
-
-
-  // newElement.addEventListener('dragstart', event => {
-  //   newElement.classList.add('constructor__item_dragging');
-  // })
-  // newElement.addEventListener('dragend', event => {
-  //   newElement.classList.remove('constructor__item_dragging');
-  //   if (draggableElement != null) {
-  //     draggableElement.classList.remove('constructor__item_dragging');
-  //   }
-  //   codeGenerator();
-  // })
-
-  // newElement.addEventListener('click', event => {
-
-  //   const newElementCopy = newElement.cloneNode(true);
-  //   const newElementCopyBadge = newElementCopy.querySelector('.constructor__item-badge');
-  //   newElementCopyBadge.innerText = '-';
-
-
-  //   newElementCopyBadge.addEventListener('click', () => {
-  //     deleteElement(newElementCopy, container_result);
-  //     codeGenerator();
-  //   });
-
-  //   container_result.appendChild(newElementCopy);
-
-  //   codeGenerator();
-  // })
-
-
-  // container_sourse.appendChild(newElement);
-  // input.value = '';
 })

@@ -42,6 +42,10 @@
 - [x] date()
 - [ ] diff()
 
+### GIT
+
+- [ ] Autodeploy
+
 ### Макет проекта ↓
 
 ![Screenshot 2024-04-07 at 03-40-39 Date](https://github.com/annybogatova/phpdate/assets/96336462/588602e8-0eed-4c66-b734-363aa5937ca6)

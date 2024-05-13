@@ -2,12 +2,10 @@ function getUnixTime() {
   return Math.floor(Date.now() / 1000);
 }
 
-// upd time every second
 setInterval(function () {
   document.querySelector('.unix').innerHTML = getUnixTime();
 
 
-  // if (is_clicked) EpochToHuman();
 }, 1000);
 
 // display at page load
@@ -18,7 +16,7 @@ document.querySelector('.unix').innerHTML = getUnixTime();
 const container = document.querySelector('.normalize-time__container');
 
 function EpochToHuman() {
-  // is_clicked = true;
+
 
   if (document.querySelector('.normalize-time__result') == null) {
     container.insertAdjacentHTML('afterbegin', '<p class="normalize-time__result"></p>');

@@ -87,16 +87,16 @@ export const characters = [
     description: 'Номер года в соответствии со стандартом ISO 8601',
     category: 'year'
   },
-  {
-    character: 'X',
-    description: 'Расширенное полное числовое представление года, не менее 4 цифр, с - для годов до нашей эры и + для годов нашей эры.',
-    category: 'year'
-  },
-  {
-    character: 'x',
-    description: 'Расширенное полное числовое представление, если требуется, или стандартное полное числовое представление, если возможно',
-    category: 'year'
-  },
+  // {
+  //   character: 'XX',
+  //   description: 'Расширенное полное числовое представление года, не менее 4 цифр, с - для годов до нашей эры и + для годов нашей эры.',
+  //   category: 'year'
+  // },
+  // {
+  //   character: 'xx',
+  //   description: 'Расширенное полное числовое представление, если требуется, или стандартное полное числовое представление, если возможно',
+  //   category: 'year'
+  // },
   {
     character: 'Y',
     description: 'Полное числовое представление года, не менее 4 цифр, с - для годов до нашей эры.',
@@ -160,7 +160,7 @@ export const characters = [
   },
   {
     character: 'v',
-    description: 'Миллисекунды. Замечание такое же, как и для u. ',
+    description: 'Миллисекунды',
     category: 'time'
   },
   //time zone
@@ -261,13 +261,6 @@ window.addEventListener("load", function () {
       fullDate_container.lastElementChild.setAttribute("data-tooltip", char.description);
       // fullDate_container.lastElementChild.setAttribute('data-bs-title', char.description);
     }
-    // container_sourse.append(item_template);
-
-    // container_sourse.insertAdjacentElement('beforeend', item_template);
-    // container_sourse.insertAdjacentHTML('beforeend',
-    //   // '<p class="constructor__item constructor__item-source" data-tooltip="' + char.description + '" draggable="true">' + char.character + '</p>')
-    //   // '<div class="constructor__item constructor__item-source" draggable="true" data-tooltip="' + char.description + '"> <p class="text">' + char.character +'</p> <span class="badge">-</span></div>');
-    //   '<div class="constructor__item constructor__item-source" draggable="true" data-tooltip="' + char.description + '"> <p class="constructor__item-text">' + char.character + '</p></div>');
   });
 
 
@@ -343,22 +336,9 @@ function addListener() {
           codeGenerator()
         });
 
-        // const newElement = draggable.cloneNode(true);
-        // newElement.classList.remove('constructor__item-source');
-        // newElement.classList.add('constructor__item-custom');
-
-        // const newBadge = document.createElement('span');
-        // newBadge.classList.add('constructor__item-badge');
-        // newBadge.innerText = '-';
-
-        // newBadge.addEventListener('click', () => {
-        //   deleteElement(newElement, container_result);
-        //   codeGenerator();
-        // });
-        // newElement.appendChild(newBadge);
-
         container_result.appendChild(item_template);
         container_result.lastElementChild.setAttribute("data-tooltip", draggable.getAttribute("data-tooltip"));
+        container_result.lastElementChild.classList.add('constructor__item-result');
 
         codeGenerator();
       }

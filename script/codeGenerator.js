@@ -6,8 +6,6 @@ export function codeGenerator() {
     result_line += child.textContent;
   })
 
-
-
   console.log(result_line);
   const url = './script/php/date.php';
   const form = new FormData();
@@ -29,7 +27,7 @@ export function codeGenerator() {
       }
       document.querySelector('.constructor_result-date').innerHTML = '';
       if (data.toString() != '') {
-        document.querySelector('.result-date__container').style.display = 'block';
+        document.querySelector('.result-date__container').style.display = 'flex';
       } else {
         document.querySelector('.result-date__container').style.display = 'none';
       }
