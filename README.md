@@ -54,4 +54,4 @@
 
 ### Посмотреть сайт можно по ссылке ↓
 
-[«Сам Проект»](https://annybogatova.github.io/phpdate/)
+[«Сам Проект»](https://php.date/)
